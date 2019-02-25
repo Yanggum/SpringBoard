@@ -1,13 +1,15 @@
-package com.example.demo;
+package com.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class JspTest {
+public class MainController {
 	
-	@RequestMapping("/")
-	private String jspTest() {
+	
+	@RequestMapping(path="/")
+	public String test(){
+		
 		
 		return "test";
 	}
