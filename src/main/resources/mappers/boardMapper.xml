@@ -19,8 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM BOARD
 	</select>
 
-	<select id="boardList"
-		resultType="com.board.domain.BoardVO">
+	<select id="boardList" resultType="com.board.domain.BoardVO">
 		SELECT
 		*
 		FROM BOARD
@@ -37,10 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="boardInsert"
 		parameterType="com.board.domain.BoardVO">
-<!-- 		INSERT INTO
-		BOARD (BNO, SUBJECT,CONTENT,WRITER,REG_DATE)
-		VALUES(#{bno},#{subject},#{content},#{writer},now())
- -->	</insert>
+		<!-- INSERT INTO BOARD (BNO, SUBJECT,CONTENT,WRITER,REG_DATE) VALUES(#{bno},#{subject},#{content},#{writer},now()) -->
+	</insert>
 
 	<update id="boardUpdate"
 		parameterType="com.board.domain.BoardVO">
@@ -57,12 +54,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<delete id="boardDelete" parameterType="int">
-		DELETE FROM BOARD WHERE BNO = #{bno}
+		DELETE FROM BOARD WHERE
+		BNO = #{bno}
 	</delete>
-	
-	
+
+
 	<select id="callproceduretest" statementType="CALLABLE">
-		{ call SP_DT(#{strDt, mode=IN, jdbcType=VARCHAR, javaType=string}) }
+		{ call SP_DT(
+			#{strDt, mode=IN, jdbcType=VARCHAR, javaType=string}
+
+		) }
 	</select>
 
 </mapper>
