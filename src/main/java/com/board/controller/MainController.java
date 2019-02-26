@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	
 	
-	@RequestMapping(path="/")
-	public String test(){
-		
-		
+	@RequestMapping("/")
+	public String test(){		
 		return "test";
 	}
 
