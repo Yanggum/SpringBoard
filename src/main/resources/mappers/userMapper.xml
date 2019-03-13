@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.board.mapper.UserMapper">
+
+	<resultMap type="com.board.domain.UserVO" id="userBeanResult">
+		<result property="userID" 			 column="UserID" 			javaType="string"></result>
+		<result property="name" 			 column="Name" 				javaType="string"></result>
+		<result property="gender" 			 column="Gender" 			javaType="string"></result>
+		<result property="deptCode" 		 column="DeptCode" 			javaType="string"></result>
+		<result property="career" 			 column="Career" 			javaType="string"></result>
+		<result property="marriage" 		 column="Marriage" 			javaType="string"></result>
+		<result property="militaryService"   column="MilitaryService" 	javaType="string"></result>
+		<result property="specialitySkills"  column="SpecialitySkills"	javaType="string"></result>
+		<result property="jobTitle"  		 column="JobTitle"			javaType="string"></result>
+		<result property="member"    		 column="Member"			javaType="string"></result>
+		<result property="email" 	 		 column="Email"     	    javaType="string"></result>
+		<result property="language"		  	 column="Language"      	javaType="string"></result>
+		<result property="useTool"  		 column="UseTool"   	    javaType="string"></result>
+		<result property="officeNo" 		 column="OfficeNo"  	    javaType="string"></result>
+		<result property="address"  		 column="Address"    	    javaType="string"></result>
+		<result property="mobileNo" 		 column="MobileNo"      	javaType="string"></result>
+		<result property="telNo"   			 column="TelNo"         	javaType="string"></result>
+		<result property="birthday" 		 column="Birthday"			javaType="date"></result>		    
+	</resultMap>
+                   
+
+	<select id="selectUserInfo" statementType="CALLABLE" parameterType="hashMap" resultMap="userBeanResult">
+	{ 
+		  call TR_CO_UserInfo_Select(
+		  	#{uuid, mode=IN, jdbcType=CHAR, javaType=string},		  
+		  	#{userId, mode=IN, jdbcType=VARCHAR, javaType=string}
+	 	  )
+	}
+	</select>
+	
+	
+	<insert id="insertUserInfo" statementType="CALLABLE" parameterType="hashMap">
+	{ 
+		  call TR_CO_UserInfo_Insert(
+			#{UserID, mode=IN, jdbcType=VARCHAR, javaType=string},		  
+			#{Password, mode=IN, jdbcType=VARCHAR, javaType=string},				
+			#{Name, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Gender, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{DeptCode, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Career, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{Marriage, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{MilitaryService, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{SpecialitySkills,	mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{JobTitle,	mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Member, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Email, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Language, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{UseTool, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{OfficeNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Address, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{MobileNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{TelNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Birthday,	mode=IN, jdbcType=DATE, javaType=Date}			  	
+	 	  )
+	}	
+	</insert>
+	
+	<update id="updateUserInfo" statementType="CALLABLE" parameterType="hashMap">
+	{
+		  call TR_CO_UserInfo_Update(
+			#{UserID, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Name, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Gender, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{DeptCode, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Career, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{Marriage, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{MilitaryService, mode=IN, jdbcType=INTEGER, javaType=string},
+			#{SpecialitySkills,	mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{JobTitle,	mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Member, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Email, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Language, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{UseTool, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{OfficeNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Address, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{MobileNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{TelNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			#{Birthday,	mode=IN, jdbcType=DATE, javaType=Date}			  	
+	 	  )	
+	  }
+	</update>
+	
+	<delete id="deleteUserInfo" statementType="CALLABLE" parameterType="hashMap">
+	{
+		call TR_CO_UserInfo_Delete(
+			#{UserID, mode=IN, jdbcType=VARCHAR, javaType=string}				
+		)
+	}
+	</delete>
+	
+	
+
+</mapper>
