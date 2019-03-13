@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="com.nexacro.xapi.data.*" %>
+<%@ page import="com.nexacro.xapi.tx.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>

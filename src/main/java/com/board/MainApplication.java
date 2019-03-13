@@ -12,10 +12,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @SpringBootApplication
 @MapperScan(value= {"com.board.mapper"})
-public class BoardApplication {
+public class MainApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BoardApplication.class, args);
+	public static void main(String[] args) {		
+		SpringApplication.run(MainApplication.class, args);
 	}
 	
 	@Bean
