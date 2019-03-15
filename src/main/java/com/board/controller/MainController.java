@@ -19,6 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.crypto.Crypto;
 import org.apache.commons.crypto.cipher.CryptoCipher;
 import org.apache.commons.crypto.cipher.CryptoCipherFactory;
 import org.apache.commons.crypto.cipher.CryptoCipherFactory.CipherProvider;
@@ -47,7 +48,7 @@ public class MainController {
 	@RequestMapping("/getuserlist")
 	public void getUserList(Model md, HttpServletRequest request, HttpServletResponse response)
 			throws PlatformException {
-		String strCharset = "euc-kr";		
+		String strCharset = "utf-8";		
 		
 
 		List<UserVO> list = new ArrayList<UserVO>();
@@ -159,7 +160,7 @@ public class MainController {
 	public void saveUserList(Model md, HttpServletRequest request, HttpServletResponse response)
 			throws PlatformException {
 
-		String strCharset = "euc-kr";
+		String strCharset = "utf-8";
 
 		VariableList outVariableList = new VariableList();
 		PlatformData outPD = new PlatformData();
@@ -201,6 +202,7 @@ public class MainController {
 				for (int j = 0; j < ds.getRowCount(); j++) {
 					var userInfo = new UserVO();
 					userInfo.setUserID(ds.getString(j, "UserID"));
+					userInfo.setPassword(ds.getString(j, "UserData"));	// Password
 					userInfo.setName(ds.getString(j, "Name"));
 					userInfo.setGender(ds.getString(j, "Gender"));
 					userInfo.setDeptCode(ds.getString(j, "DeptCode"));
